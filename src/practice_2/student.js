@@ -1,4 +1,4 @@
-import Person from "../../src/practice_1/person.js";
+import Person from "../../src/practice_2/person.js";
 
 function Student(name, age, klass) {
     Person.call(this, name, age);
