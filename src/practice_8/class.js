@@ -6,7 +6,7 @@ Class.prototype.getDisplayName = function () {
     return `Class ${this.number}`;
 };
 Class.prototype.assignLeader = function(student) {
-    this.leader = student.id;
+    student.klass.leader = student;
 };
 module.exports = Class;
 

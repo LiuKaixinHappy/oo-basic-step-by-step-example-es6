@@ -8,7 +8,7 @@ Student.prototype = new Person();
 Student.prototype.introduce = function () {
     let intro = [];
     intro[0] = `${Person.prototype.introduce.call(this, arguments)} I am a Student.`;
-    if (this.id === this.klass.leader) {
+    if (this.klass.leader === this) {
         intro[1] = `I am Leader of Class ${this.klass.number}.`;
     } else {
         intro[1] = `I am at Class ${this.klass.number}.`;
