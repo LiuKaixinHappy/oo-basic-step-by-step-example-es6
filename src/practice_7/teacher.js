@@ -1,25 +1,29 @@
 import Person from "../../src/practice_7/person.js";
-
-
 function Teacher(name, age, klass) {
     Person.call(this, name, age);
     this.klass = klass;
-    if (arguments.length < 3) {
-        this.introduce = function () {
-            return `My name is ${name}. I am ${age} years old. I am a Teacher. I teach No Class.`;
-        };
-    } else {
-        this.introduce = function () {
-            return `My name is ${name}. I am ${age} years old. I am a Teacher. I teach Class ${klass.number}.`;
-        };
-    }
-    this.introduceWith = function (student) {
-        if (student.klass.number === this.klass.number) {
-            return `My name is ${name}. I am ${age} years old. I am a Teacher. I teach ${student.name}.`;
-        }
-        return `My name is ${name}. I am ${age} years old. I am a Teacher. I don't teach ${student.name}.`
-    };
 }
+Teacher.prototype.introduce = function () {
+    let intro = [];
+    intro[0] = `${Person.prototype.introduce.call(this, arguments)} I am a Teacher.`;
+    if (this.klass === null || this.klass === undefined) {
+        intro[1] = 'I teach No Class.';
+    } else {
+        intro[1] = `I teach Class ${this.klass.number}.`;
+    }
+    return intro.join(' ');
+};
+Teacher.prototype.introduceWith = function (student) {
+    let introWith = [];
+    introWith[0] = `${Person.prototype.introduce.call(this, arguments)} I am a Teacher.`;
+    if (student.klass.number === this.klass.number) {
+        introWith[1] = `I teach ${student.name}.`;
+    } else {
+        introWith[1] = `I don't teach ${student.name}.`
+    }
+    return introWith.join(' ');
+};
+
 module.exports = Teacher;
 
 
