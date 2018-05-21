@@ -6,7 +6,7 @@ Class.prototype.getDisplayName = function () {
     return `Class ${this.number}`;
 };
 Class.prototype.assignLeader = function (student) {
-    if (this.number === student.klass.number) {
+    if (this.isIn(student)) {
         student.klass.leader = student;
     } else {
         console.log('It is not one of us.');

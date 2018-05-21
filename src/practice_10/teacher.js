@@ -19,12 +19,7 @@ Teacher.prototype.introduce = function () {
     return intro.join(' ');
 };
 Teacher.prototype.isTeaching = function (student) {
-    for (let klass of this.klasses) {
-        if (klass.isIn(student)) {
-            return true;
-        }
-    }
-    return false;
+    return this.klasses.filter(klass=>klass.isIn(student)) !== undefined;
 };
 module.exports = Teacher;
 
